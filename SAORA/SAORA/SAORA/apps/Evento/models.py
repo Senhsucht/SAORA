@@ -35,7 +35,7 @@ class Evento(models.Model):
 	nombre = models.CharField(max_length=25)
 	descr = models.CharField(max_length=50)
 	lugar = models.CharField(max_length=50)
-	fecha = models.DateField()
+	fecha = models.DateTimeField()
 	id_tevento = models.ForeignKey('Tevento')
 	id_eve_edo = models.ForeignKey('Eve_Edo')
 	ult_act = models.DateField(auto_now_add=True)
@@ -52,12 +52,12 @@ class Eve_Patro(models.Model):
 	def __unicode__(self):
 		return "%d"%(self.id)
 
-class Eve_Asist(models.Model):
-	id_evento = models.ForeignKey('Evento')
-	id_afil = models.ForeignKey('Usuarios.Afiliado')
-	hora_llagada = models.TimeField()
-	hora_salida = models.TimeField()
-	ult_act = models.DateField(auto_now_add=True)
-
-	def __unicode__(self):
-		return "%d"%(self.id)
+# class Eve_Asist(models.Model):
+# 	id_evento = models.ForeignKey('Evento')
+# 	id_afil = models.ForeignKey('Usuarios.Afiliado')
+# 	hora_llagada = models.TimeField()
+# 	hora_salida = models.TimeField()
+# 	ult_act = models.DateField(auto_now_add=True)
+#
+# 	def __unicode__(self):
+# 		return "%d"%(self.id)

@@ -62,7 +62,7 @@ def Alta_Ado_Edo(request):
 
     return render(request,'Adopcion/alta_ado_edo.html',ctx)
 
-def Con_Adoptante(request):
+def Con_Ado_Edo(request):
 	obj = Ado_Edo.objects.all()
 	ctx = {'mensaje':obj}
 
@@ -121,10 +121,10 @@ def Alta_Visita(request):
         else:
             ctx={'mensaje': 'Error en los datos.','form':form}
 
-    return render(request,'Adopcion/alta_adopcion.html',ctx)
+    return render(request,'Adopcion/alta_visita.html',ctx)
 
 def Con_Visita(request):
 	obj = Visita.objects.all()
 	ctx = {'mensaje':obj}
 
-	return render(request,'Adopcion/con_adopcion.html',ctx)
+	return render(request,'Adopcion/con_visita.html',ctx)

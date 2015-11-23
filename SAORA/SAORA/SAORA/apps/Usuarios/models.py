@@ -25,6 +25,8 @@ class Afiliado(models.Model):
 	ape_mat = models.CharField(max_length=15)
 	edad = models.IntegerField()
 	direccion  = models.CharField(max_length=70)
+	tel = models.IntegerField()
+	email = models.CharField(max_length=35)
 	id_tafil = models.ForeignKey('Tafil')
 	ult_act = models.DateField(auto_now_add=True)
 	imagen = models.ImageField(upload_to='afiliados/')

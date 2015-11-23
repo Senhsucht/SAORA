@@ -7,6 +7,8 @@ class Form_Afil(forms.Form):
 	Apellido_Materno = forms.CharField(max_length=15)
 	Edad = forms.IntegerField()
 	Direccion  = forms.CharField(max_length=70)
+	Telefono  = forms.IntegerField()
+    Email = forms.CharField(max_length=35)
 	Tipo_de_Afiliado = forms.ModelChoiceField(queryset=Tafil.objects.all())
 	Imagen = forms.ImageField(label='Selecciona un archivo')
 	slug = forms.CharField(widget=forms.HiddenInput(), required=False)

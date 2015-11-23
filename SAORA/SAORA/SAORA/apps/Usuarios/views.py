@@ -25,6 +25,8 @@ def Alta_Afil(request):
 			a.ape_mat = form.cleaned_data['Apellido_Materno']
 			a.edad = form.cleaned_data['Edad']
 			a.direccion = form.cleaned_data['Direccion']
+            t.tel = form.cleaned_data['Telefono']
+            t.email = form.cleaned_data['Email']
 			a.id_tafil = form.cleaned_data['Tipo_de_Afiliado']
 			a.imagen = form.cleaned_data['Imagen']
 
