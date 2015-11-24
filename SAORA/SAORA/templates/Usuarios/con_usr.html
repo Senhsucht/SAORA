@@ -1,0 +1,42 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de usuarios {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de usuarios</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Usuarios registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Usuario</th>
+							<th>Afiliado</th>
+							<th>Tipo de usuario</th>
+							<th>Activo</th>
+							<th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+								<td> {{item.usr}}</td>
+								<td> {{item.id_afil}} </td>
+								<td> {{item.id_tusr}} </td>
+								<td> {{item.activo}} </td>
+								<td> {{item.ult_act}} </td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de rescates {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de rescates</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Rescates registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Folio</th>
+							<th>Afiliado</th>
+							<th>Animal</th>
+							<th>Lugar</th>
+							<th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+								<td> {{item.folio}}</td>
+								<td> {{item.id_afil}} </td>
+								<td> {{item.id_animal}} </td>
+								<td> {{item.lugar}} </td>
+								<td> {{item.ult_act}} </td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}

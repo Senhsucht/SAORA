@@ -1,0 +1,42 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de animales {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de animales</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Animales registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Imagen</th>
+							<th>Nombre</th>
+							<th>Raza</th>
+							<th>Edad</th>
+							<th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+                <td> <a href="http://localhost:8000/media/{{item.imagen}}"> <img src="http://localhost:8000/media/{{item.imagen}}" class="img-responsive" alt="{{item.nombre}}" height="100" width="100"> </a> </td>
+								<td> {{item.nombre}} </td>
+								<td> {{item.id_raza}} </td>
+								<td> {{item.edad}} </td>
+								<td> {{item.ult_act}} </td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}

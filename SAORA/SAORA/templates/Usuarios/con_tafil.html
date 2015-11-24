@@ -1,0 +1,37 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de afiliados {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de afiliados</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Afiliados registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Tipo de afiliado</th>
+              <th>Descripcion</th>
+              <th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+								<td> {{item.tafil}} </td>
+                <td> {{item.descr}} </td>
+								<td> {{item.ult_act}} </td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}
