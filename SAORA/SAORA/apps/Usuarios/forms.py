@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.contrib.auth.models import User , Group
 
 class Form_Afil(forms.Form):
 	Nombre = forms.CharField(max_length=15)
@@ -21,7 +22,7 @@ class Form_Usr(forms.Form):
 	Usuario = forms.CharField(max_length=15)
 	Contrasena = forms.CharField(max_length=25)
 	Afiliado = forms.ModelChoiceField(queryset=Afiliado.objects.all())
-	Tipo_de_Usuario	= forms.ModelChoiceField(queryset=Tusr.objects.all())
+	Tipo_de_Usuario	= forms.ModelChoiceField(queryset=Group.objects.all())
 	Activo = forms.BooleanField(widget=forms.HiddenInput(), required=False)
 
 	# class Meta:
@@ -42,9 +43,9 @@ class Form_Usr(forms.Form):
 	#     model = Tusr
 	#     fields = '__all__'
 
-class Form_Tusr(forms.Form):
-	Tipo_de_Usuario = forms.CharField(max_length=10)
-	Descripcion = forms.CharField(max_length=50)
+# class Form_Tusr(forms.Form):
+# 	Tipo_de_Usuario = forms.CharField(max_length=10)
+# 	Descripcion = forms.CharField(max_length=50)
 
 class Form_Tafil(forms.Form):
 	Tipo_de_Afiliado = forms.CharField(max_length=10)

@@ -15,16 +15,12 @@
 					<thead>
 						<tr>
 							<th>Tipo de afiliado</th>
-              <th>Descripcion</th>
-              <th>Fecha de registro</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for item in mensaje %}
 							<tr>
-								<td> {{item.tusr}} </td>
-                <td> {{item.descr}} </td>
-								<td> {{item.ult_act}} </td>
+								<td> {{item.name}} </td>
 							</tr>
 						{% endfor %}
 					</tbody>

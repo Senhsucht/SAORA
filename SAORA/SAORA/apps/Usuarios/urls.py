@@ -3,7 +3,13 @@ from django.contrib import admin
 from .views import *
 
 urlpatterns = patterns('',
-    url(r'^$', index, name='index'),
+    url(r'^system/$', index, name='index'),
+
+	url(r'^$', 'django.contrib.auth.views.login', {'template_name' : 'General/index.html'}, name='login'),
+    url(r'^cerrar/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+	url(r'^login/$', login, name='login1'),
+
+
 	url(r'^alta_afil/',Alta_Afil,name='Alta_Afil'),
 	url(r'^con_afil/',Con_Afil,name='Con_Afil'),
 	url(r'^alta_usr/',Alta_Usr,name='Alta_Usr'),

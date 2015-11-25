@@ -18,6 +18,8 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-4">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Inicio</a></li>
+
+{% if request.user.groups.all.0.name == "Adopcion" or user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -34,7 +36,9 @@
                 </li>
               </ul>
             </li>
+            {% endif %}
 
+            {% if request.user.groups.all.0.name == "Eventos" or user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -51,7 +55,8 @@
                 </li>
               </ul>
             </li>
-
+            {% endif %}
+            {% if request.user.groups.all.0.name == "Inventario" or user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -64,37 +69,41 @@
                 </li>
               </ul>
             </li>
-
+            {% endif %}
+            {% if request.user.groups.all.0.name == "Rescate" or user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Rescate <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="/res/alta_rescate/">Alta de adopcion</a></li>
-                    <li><a href="/res/alta_animal/">Alta de adoptante</a></li>
+                    <li><a href="/res/alta_rescate/">Alta de rescate</a></li>
+                    <li><a href="/res/alta_animal/">Alta de animal</a></li>
                     <li class="divider"></li>
-                    <li><a href="/res/con_rescate/">Consulta de adopciones</a></li>
-                    <li><a href="/res/con_animal/">Consulta de adoptante</a></li>
+                    <li><a href="/res/con_rescate/">Consulta de rescate</a></li>
+                    <li><a href="/res/con_animal/">Consulta de animal</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-
+            {% endif %}
+            {% if request.user.groups.all.0.name == "Administracion" or user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Administracion <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="/usr/alta_usr/">Alta de adopcion</a></li>
-                    <li><a href="/usr/alta_afil">Alta de adoptante</a></li>
+                    <li><a href="/usr/alta_usr/">Alta de usuario</a></li>
+                    <li><a href="/usr/alta_afil">Alta de afiliado</a></li>
                     <li class="divider"></li>
-                    <li><a href="/usr/con_usr">Consulta de adopciones</a></li>
-                    <li><a href="/usr/con_afil">Consulta de adoptante</a></li>
+                    <li><a href="/usr/con_usr">Consulta de usuario</a></li>
+                    <li><a href="/usr/con_afil">Consulta de afiliado</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
+            {% endif %}
 
+            {% if user.is_superuser %}
             <li>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -121,6 +130,7 @@
                 </li>
               </ul>
             </li>
+            {% endif %}
 
             <li>
                 <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">Perfil <i class=""></i> </a>
@@ -128,11 +138,13 @@
           </ul>
           <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="" alt="maridlcrmn" width="20" /> {{request.user.username}} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <!-- <img class="img-circle" src="http://localhost:8000/media/{{request.Usuario.id_afil}}" alt="maridlcrmn" width="20" /> -->
+                {{request.user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Perfil</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Cerrar Sesion</a></li>
+                <li><a href="/usr/cerrar/">Cerrar Sesion</a></li>
               </ul>
             </li>
           </ul>

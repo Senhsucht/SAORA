@@ -15,6 +15,13 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+from django.core.urlresolvers import reverse_lazy
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_URL = reverse_lazy('logout')
+
+AUTH_PROFILE_MODULE = 'SAORA.apps.Usuarios.Usuario'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -83,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    
+
         #'ENGINE': 'django.db.backends.mysql',
         #'NAME': 'SAORADB',
         #'USER': 'admin',

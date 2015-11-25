@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.template import RequestContext
+from django.shortcuts import render_to_response
+from django.views.generic import TemplateView
 from .models import *
 from .forms import *
 from django.db.models import Q
@@ -9,27 +12,40 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
 
 # Create your views here.
-
+#
 def index(request):
 	ctx = { 'mensaje': "BIENVENIDOS"}
 
-	if request.POST:
-		usu = request.POST.get('Usr')
-		contra = request.POST.get('Pwd')
-		u = Usuario()
-		try:
-			u = Usuario.objects.get(usr=usu,pwd=contra,activo=True)
-		except Usuario.DoesNotExist:
-			u.usr = 'noope'
-
-		if usu == u.usr :
-			ctx = { 'mensaje': "Encontrado"}
-			return redirect('/usr/alta_afil/')
-			# return render(request,'General/system.html',ctx)
-		else:
-			ctx = { 'mensaje': 'Error al inicio de sesion'}
+	# if request.POST:
+	# 	usu = request.POST.get('Usr')
+	# 	contra = request.POST.get('Pwd')
+	# 	u = Usuario()
+	# 	try:
+	# 		u = Usuario.objects.get(usr=usu,pwd=contra,activo=True)
+	# 	except Usuario.DoesNotExist:
+	# 		u.usr = 'noope'
+	#
+	# 	if usu == u.usr :
+	# 		ctx = { 'mensaje': "Encontrado"}
+	# 		return redirect('/usr/alta_afil/')
+	# 		# return render(request,'General/system.html',ctx)
+	# 	else:
+	# 		ctx = { 'mensaje': 'Error al inicio de sesion'}
 
 	return render(request,'General/index.html',ctx)
+
+
+def login(request):
+	ctx = { 'mensaje': "BIENVENIDOS"}
+
+	return render_to_response('General/index.html',context_instance=RequestContext(request))
+
+def logout(request):
+    logout(request)
+
+
+class login(TemplateView):
+	template_name = 'General/index.html'
 
 @login_required(login_url='/')
 def Alta_Afil(request):
@@ -67,29 +83,43 @@ def Alta_Afil(request):
 def Alta_Usr(request):
 	# form = Form_Usr()
 	afiliados = Afiliado.objects.all()
-	tusuario = Tusr.objects.all()
-	ctx={'mensaje': 'Ingrese datos:'}
+	tusuario = Group.objects.all()
+	ctx={'mensaje': 'Ingrese datos:','afiliados':afiliados,'tusuario':tusuario}
 
-	if request.method == "POST":
-		form =  Form_Usr(request.POST, request.FILES)
+	if request.POST:
 
-		if form.is_valid():
+		afi = request.POST.get('afiliado')
+		info = Afiliado.objects.get(id=afi)
+		tuser = request.POST.get('tusuario')
+		# tuser = Group.objects.get(id=tuser)
+
+		p1=request.POST.get('pass1')
+		p2=request.POST.get('pass2')
+		usuario = request.POST.get('usuario')
+		fname = info.nombre
+		lname = info.ape_pat
+
+		if p1==p2:
 			u = Usuario()
+			usr = User.objects.create_user(
+			username=usuario,first_name=fname,last_name=lname,password=p1
+			)
+			user.groups.add(tuser)
 
+			usr.save()
 
-			u.usr = form.cleaned_data['Usuario']
-			u.pwd = form.cleaned_data['Contrasena']
-			u.id_afil = form.cleaned_data['Afiliado']
-			u.id_tusr = form.cleaned_data['Tipo_de_Usuario']
+			u.user = usr
+			u.id_afil = info
+			# u.id_tusr = tuser
 
 			u.save()
 
-			form = Form_Usr()
-			ctx={'mensaje': 'Usuario registrado correctamente!'}
+			# form = Form_Usr()
+			ctx={'mensaje': 'Usuario registrado correctamente!','afiliados':afiliados,'tusuario':tusuario}
 
 		else:
-			form = Form_Usr()
-			ctx={'mensaje': 'Error en los datos.'}
+			# form = Form_Usr()
+			ctx={'mensaje': 'Error en los datos.','afiliados':afiliados,'tusuario':tusuario}
 
 	return render(request,'Usuarios/alta_usr.html',ctx)
 
@@ -121,30 +151,28 @@ def Con_Usr(request):
 
 @login_required(login_url='/')
 def Alta_tusr(request):
-    form = Form_Tusr()
-    ctx={'mensaje': 'Ingrese datos de nuevo tipo de usuario','form':form}
+    # form = Form_Tusr()
+    ctx={'mensaje': 'Ingrese datos de nuevo tipo de usuario'}
 
-    if request.method == 'POST':
-        form = Form_Tusr(request.POST,request.FILES)
+    if request.POST:
+        t= Group()
 
-        if form.is_valid():
-            t= Tusr()
+        g = request.POST.get('Tipo_de_Usuario')
 
-            t.tusr = form.cleaned_data['Tipo_de_Usuario']
-            t.descr = form.cleaned_data['Descripcion']
+        t.name = g
+        # t.descr = form.cleaned_data['Descripcion']
+        t.save()
+        # form = Form_Tusr()
 
-            t.save()
-            form = Form_Tusr()
-
-            ctx={'mensaje':'Registro exitoso!','form':form}
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+        ctx={'mensaje':'Registro exitoso!'}
+    else:
+        ctx={'mensaje':'Error en los datos.'}
 
     return render(request,'Usuarios/alta_tusr.html',ctx)
 
 @login_required(login_url='/')
 def Con_tusr(request):
-    obj = Tusr.objects.all()
+    obj = Group.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Usuarios/con_tusr.html',ctx)
