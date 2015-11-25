@@ -1,0 +1,42 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de adopciones {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de adopciones</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Adopciones registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Folio de adopcion</th>
+							<th>Adoptante</th>
+							<th>Animal</th>
+							<th>Estado</th>
+              <th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+								<td> {{item.folio}}</td>
+								<td> {{item.id_adoptante}} </td>
+								<td> {{item.id_animal}} </td>
+								<td> {{item.id_ado_edo}} </td>
+                <td> {{item.ult_act}} </td>
+                
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}

@@ -11,30 +11,128 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
+          <a class="navbar-brand" href="#">SAORA</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-4">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Eventos</a></li>
-            <li><a href="#">Redes Sociales</a></li>
-            <li><a href="#">Contactanos</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Adopcion <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/adop/alta_adopcion/">Alta de adopcion</a></li>
+                    <li><a href="/adop/alta_adoptante">Alta de adoptante</a></li>
+                    <li><a href="/adop/alta_visita">Alta de visitas</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/adop/con_adopcion">Consulta de adopciones</a></li>
+                    <li><a href="/adop/con_adoptante">Consulta de adoptante</a></li>
+                    <li><a href="/adop/con_visita">Consulta de visitas</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Eventos <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/eve/alta_eve/">Alta de evento</a></li>
+                    <li><a href="/eve/alta_patro">Alta de patrocinador</a></li>
+                    <li><a href="/eve/alta_eve_patro">Alta de patrocinador por evento</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/eve/con_eve">Consulta de evetos</a></li>
+                    <li><a href="/eve/con_patro">Consulta de patrocinadores</a></li>
+                    <li><a href="/eve/con_eve_patro">Consulta de patrocinadores por eventos</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Inventario <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/">Pendiente</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/">Pendiente</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Rescate <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/res/alta_rescate/">Alta de adopcion</a></li>
+                    <li><a href="/res/alta_animal/">Alta de adoptante</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/res/con_rescate/">Consulta de adopciones</a></li>
+                    <li><a href="/res/con_animal/">Consulta de adoptante</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Administracion <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/usr/alta_usr/">Alta de adopcion</a></li>
+                    <li><a href="/usr/alta_afil">Alta de adoptante</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/usr/con_usr">Consulta de adopciones</a></li>
+                    <li><a href="/usr/con_afil">Consulta de adoptante</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> SUPERUSER!!! <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/usr/alta_tusr/">Alta de tipos de usuarios</a></li>
+                    <li><a href="/usr/alta_tafil">Alta de tipos de afiliados</a></li>
+                    <li><a href="/adop/alta_ado_edo">Alta de estados de adopcion</a></li>
+                    <li><a href="/eve/alta_eveedo">Alta de estados de eventos</a></li>
+                    <li><a href="/eve/alta_teve">Alta de tipos de eventos</a></li>
+                    <li><a href="/res/alta_tanimal">Alta de tipos de animales</a></li>
+                    <li><a href="/res/alta_raza">Alta de razas</a></li>
+
+                    <li class="divider"></li>
+                    <li><a href="/usr/con_tusr">Consulta de tipos de usuarios</a></li>
+                    <li><a href="/usr/con_tafil">Consulta de tipos de afiliados</a></li>
+                    <li><a href="/adop/con_ado_edo">Consulta de estados de adopcion</a></li>
+                    <li><a href="/eve/con_eveedo">Consulta de estados de eventos</a></li>
+                    <li><a href="/eve/con_teve">Consulta de tipos de eventos</a></li>
+                    <li><a href="/res/con_tanimal">Consulta de tipos de animales</a></li>
+                    <li><a href="/res/con_raza">Consulta de razas</a></li>
+
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
             <li>
                 <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">Perfil <i class=""></i> </a>
             </li>
           </ul>
           <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="https://pbs.twimg.com/profile_images/588909533428322304/Gxuyp46N.jpg" alt="maridlcrmn" width="20" /> {{request.user.username}} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="" alt="maridlcrmn" width="20" /> {{request.user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">My profile</a></li>
-                <li><a href="#">Favorited</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Perfil</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="#">Cerrar Sesion</a></li>
               </ul>
             </li>
           </ul>
