@@ -2,14 +2,14 @@
 {% block title %} Registro de visitas {% endblock %}
 {% block content %}
 <div class="bs-docs-section">
-	<div class="container">
+	<!-- <div class="container">
 		<h3 class="page-header">Registro de visitas</h3>
 		<h5> {{mensaje}} </h5>
-	</div>
+	</div> -->
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="row">
-
+<!--
 				<form class ="col-md-4"action="/adop/alta_visita/" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<div class="row">
@@ -20,7 +20,58 @@
 							</div>
 						</div>
 					</div>
+				</form> -->
+
+				<form class="form-horizontal" action="/adop/alta_visita/" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Registro de visitas</legend>
+
+				<h4> {{mensaje}} </h4>
+				<!-- Select Basic -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="adopcion">Adopcion</label>
+				  <div class="col-md-4">
+				    <select id="adopcion" name="adopcion" class="form-control">
+							{% for i in adopciones %}
+								<option value="{{i.id}}">{{i.folio}}</option>
+							{% endfor %}
+				    </select>
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="visita">No de visita</label>
+				  <div class="col-md-4">
+				  <input id="visita" name="visita" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="descr">Descripcion</label>
+				  <div class="col-md-4">
+				  <input id="descr" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="registrar"></label>
+				  <div class="col-md-4">
+				    <button id="registrar" name="registrar" class="btn btn-primary">Registrar</button>
+				  </div>
+				</div>
+
+				</fieldset>
 				</form>
+
+
 			</div>
 		</div>
 

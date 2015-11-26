@@ -1,0 +1,112 @@
+{% extends "General/base.html"%}
+{% block title %} Registro de Donante {% endblock %}
+{% block content %}
+<!-- <div class="bs-docs-section">
+	<div class="container">
+		<h3 class="page-header">Registro de patrocinador</h3>
+		<h5> {{mensaje}} </h5>
+	</div> -->
+	<div class="container-wrapper">
+		<div class="container">
+			<div class="row">
+<!--
+				<form class ="col-md-4"action="/eve/alta_patro/" method="POST" enctype="multipart/form-data">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								{% csrf_token %}
+								{{ form.as_p }}
+								<input type="submit" class="btn btn-default" value="Registrar">
+							</div>
+						</div>
+					</div>
+				</form> -->
+
+        <form class="form-horizontal" action="/inv/alta_donante/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+
+          <!-- Form Name -->
+          <legend>Registro de Donante</legend>
+
+					<h4> {{mensaje}} </h4>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="nombre">Nombre</label>
+            <div class="col-md-4">
+            <input id="nombre" name="nombre" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="ape_pat">Apellido Paterno</label>
+            <div class="col-md-4">
+            <input id="ape_pat" name="ape_pat" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="ape_mat">Apellido Materno</label>
+            <div class="col-md-4">
+            <input id="ape_mat" name="ape_mat" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="rfc">RFC</label>
+            <div class="col-md-4">
+            <input id="rfc" name="rfc" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="tel">Telefono</label>
+            <div class="col-md-4">
+            <input id="tel" name="tel" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="direccion">Direccion</label>
+            <div class="col-md-4">
+              <textarea class="form-control" id="direccion" name="direccion"></textarea>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Email</label>
+            <div class="col-md-4">
+            <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="registrar"></label>
+            <div class="col-md-4">
+              <button id="registrar" name="registrar" class="btn btn-primary">Registrar</button>
+            </div>
+          </div>
+
+          </fieldset>
+          </form>
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock %}

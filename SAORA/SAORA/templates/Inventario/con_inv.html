@@ -1,36 +1,30 @@
 {% extends "General/base.html"%}
-{% block title %} Reporte de eventos {% endblock %}
+{% block title %} Reporte de inventario {% endblock %}
 {% block content %}
 
 	<div class="container">
-		<h3>Reporte de eventos</h3>
+		<h3>Reporte de inventario</h3>
 	</div>
 
 	<div class="container">
 		<section class="row">
 			<div class="panel panel-default">
 
-			<div class="panel-heading">Eventos registrados</div>
+			<div class="panel-heading">Inventario registrados</div>
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Nombres</th>
+							<th>Producto</th>
+							<th>Cantidad</th>
 							<th>Descripcion</th>
-							<th>Lugar</th>
-							<th>Fecha y Hora</th>
-							<th>Tipo de evento</th>
-							<th>Estado del evento</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for item in mensaje %}
 							<tr>
-								<td> {{item.nombre}}</td>
+								<td> {{item.id_producto}}</td>
+								<td> {{item.cantidad}} </td>
 								<td> {{item.descr}} </td>
-								<td> {{item.lugar}} </td>
-								<td> {{item.fecha}} </td>
-								<td> {{item.id_tevento}} </td>
-								<td> {{item.id_eve_edo}} </td>
 
 							</tr>
 						{% endfor %}

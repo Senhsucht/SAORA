@@ -16,24 +16,7 @@ from django.contrib.auth import logout
 def index(request):
 	ctx = { 'mensaje': "BIENVENIDOS"}
 
-	# if request.POST:
-	# 	usu = request.POST.get('Usr')
-	# 	contra = request.POST.get('Pwd')
-	# 	u = Usuario()
-	# 	try:
-	# 		u = Usuario.objects.get(usr=usu,pwd=contra,activo=True)
-	# 	except Usuario.DoesNotExist:
-	# 		u.usr = 'noope'
-	#
-	# 	if usu == u.usr :
-	# 		ctx = { 'mensaje': "Encontrado"}
-	# 		return redirect('/usr/alta_afil/')
-	# 		# return render(request,'General/system.html',ctx)
-	# 	else:
-	# 		ctx = { 'mensaje': 'Error al inicio de sesion'}
-
 	return render(request,'General/index.html',ctx)
-
 
 def login(request):
 	ctx = { 'mensaje': "BIENVENIDOS"}

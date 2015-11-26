@@ -1,0 +1,40 @@
+{% extends "General/base.html"%}
+{% block title %} Reporte de patrocinadores por eventos {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Reporte de patrocinadores por eventos</h3>
+	</div>
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+
+			<div class="panel-heading">Patrocinadores por eventos registrados</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Evento</th>
+							<th>Patrocinador</th>
+							<th>Descripcion</th>
+							<th>Fecha de registro</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in mensaje %}
+							<tr>
+								<td> {{item.id_evento}}</td>
+								<td> {{item.id_patrocinador}} </td>
+								<td> {{item.descr}} </td>
+								<td> {{item.ult_act}} </td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "General/base.html"%}
+{% block title %} Registro de patrocinador {% endblock %}
+{% block content %}
+<!-- <div class="bs-docs-section">
+	<div class="container">
+		<h3 class="page-header">Registro de patrocinador</h3>
+		<h5> {{mensaje}} </h5>
+	</div> -->
+	<div class="container-wrapper">
+		<div class="container">
+			<div class="row">
+<!--
+				<form class ="col-md-4"action="/eve/alta_patro/" method="POST" enctype="multipart/form-data">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								{% csrf_token %}
+								{{ form.as_p }}
+								<input type="submit" class="btn btn-default" value="Registrar">
+							</div>
+						</div>
+					</div>
+				</form> -->
+
+        <form class="form-horizontal" action="/inv/baja_inv/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+
+						<!-- <h4> {{mensaje}} </h4> -->
+          <!-- Form Name -->
+          <legend>Baja de Inventario</legend>
+
+          <h4> {{mensaje}} </h4>
+
+
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="afiliado">Afiliado</label>
+            <div class="col-md-4">
+              <select id="afiliado" name="afiliado" class="form-control">
+								{% for i in afiliados %}
+									<option value="{{i.id}}">{{i.ape_pat}} {{i.ape_mat}} , {{i.nombre}}</option>
+								{% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <!-- Select Basic -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="producto">Producto</label>
+            <div class="col-md-4">
+              <select id="producto" name="producto" class="form-control">
+								{% for i in productos %}
+									<option value="{{i.id}}">{{i.nombre}} : {{i.cneto}}</option>
+								{% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="cantidad">Cantidad</label>
+            <div class="col-md-4">
+            <input id="cantidad" name="cantidad" type="number" min="0" placeholder="" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="descr">Descripcion</label>
+            <div class="col-md-4">
+              <textarea class="form-control" id="descr" name="descr"></textarea>
+            </div>
+          </div>
+
+          <!-- Select Basic -->
+          <!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="evento">Evento</label>
+            <div class="col-md-4">
+              <select id="evento" name="evento" class="form-control">
+								{% for i in eventos %}
+									<option value="{{i.id}}">{{i.nombre}} : {{i.fecha}}</option>
+								{% endfor %}
+              </select>
+            </div>
+          </div> -->
+
+          <!-- Select Basic -->
+          <!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="donante">Donante</label>
+            <div class="col-md-4">
+              <select id="donante" name="donante" class="form-control">
+								{% for i in donantes %}
+									<option value="{{i.id}}">{{i.ape_pat}} {{i.ape_mat}} , {{i.nombre}}</option>
+								{% endfor %}
+              </select>
+            </div>
+          </div> -->
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="registrar"></label>
+            <div class="col-md-4">
+              <button id="registrar" name="registrar" class="btn btn-primary">Registrar</button>
+            </div>
+          </div>
+
+          </fieldset>
+          </form>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock %}

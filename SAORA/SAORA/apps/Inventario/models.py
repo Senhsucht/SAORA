@@ -15,7 +15,7 @@ class Producto(models.Model):
 
 class Inventario(models.Model):
 	id_producto = models.ForeignKey('Producto')
-	cantidad = models.IntegerField()
+	cantidad = models.PositiveIntegerField()
 	descr = models.CharField(max_length=50)
 	ult_act = models.DateField(auto_now_add=True)
 
@@ -38,11 +38,11 @@ class Donante(models.Model):
 class Inv_Hist(models.Model):
 	id_afiliado= models.ForeignKey('Usuarios.Afiliado')
 	id_producto= models.ForeignKey('Producto')
-	cantidad = models.IntegerField()
-	descr  = models.CharField(max_length=50)
-	caducidad = models.IntegerField()
-	id_donante = models.ForeignKey('Donante')
-	id_evento = models.ForeignKey('Evento.Evento')
+	cantidad = models.PositiveIntegerField()
+	descr  = models.CharField(max_length=50, null=True)
+	# caducidad = models.IntegerField()
+	id_donante = models.ForeignKey('Donante', null=True)
+	id_evento = models.ForeignKey('Evento.Evento', null=True)
 	alta_baja = models.BooleanField()
 	ult_act = models.DateField(auto_now_add=True)
 

@@ -1,0 +1,63 @@
+{% extends "General/base.html" %}
+{% block title %}Movimientos de inventario {% endblock %}
+{% block content %}
+
+	<div class="container">
+		<h3>Movimientos de inventario</h3>
+	</div>
+
+	<div class="container">
+		<h5>Filtros</h5>
+		<form class = "form-horizontal" action="/inv/con_inv_edo/" method="POST">
+			{% csrf_token %}
+
+      <label>Estado</label>
+			<select name="edo">
+        <option value="1">Alta</option>
+				<option value="2">Baja</option>
+			<input type="submit" value="Consultar">
+		</form>
+	</div>
+
+
+	<div class="container">
+		<section class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading">Movimientos de inventario</div>
+				<table class="table">
+					<thead>
+					<tr>
+							<th>Producto</th>
+							<th>Afilado</th>
+							<th>Cantidad</th>
+							<th>Descripcion</th>
+							<th>Donante</th>
+							<th>Evento</th>
+							<th>Alta o Baja</th>
+							<th>Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in mensaje%}
+							<tr>
+								<td>{{i.id_producto}}</td>
+								<td>{{i.id_afiliado}}</td>
+								<td>{{i.cantidad}}</td>
+								<td>{{i.descr}}</td>
+								<td>{{i.id_donante}}</td>
+								<td>{{i.id_evento}}</td>
+                {% if i.alta_baja == True %}
+								  <td>Alta</td>
+                {% else %}
+                  <tb>Baja</tb>
+                {% endif %}
+								<td>{{i.ult_act}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+
+{% endblock %}

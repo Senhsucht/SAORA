@@ -1,44 +1,44 @@
 from django.shortcuts import render
 from .forms import *
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/')
 def Alta_Adoptante(request):
-    form = Form_Adoptante()
-    ctx={'mensaje':'Ingrese datos','form':form}
+    # form = Form_Adoptante()
+    ctx={'mensaje':'Ingrese datos'}
 
-    if request.method=='POST':
-        form = Form_Adoptante(request.POST,request.FILES)
+    if request.POST:
+        a = Adoptante()
 
-        if form.is_valid():
-            a = Adoptante()
+        a.nombre = request.POST.get('nombre')
+        a.ape_pat = request.POST.get('ape_pat')
+        a.ape_mat = request.POST.get('ape_mat')
+        a.edad = request.POST.get('edad')
+        a.direccion = request.POST.get('direccion')
+        a.tel = request.POST.get('telefono')
+        a.email = request.POST.get('email')
 
-            a.nombre = form.cleaned_data['Nombre']
-            a.ape_pat = form.cleaned_data['Apellido_Paterno']
-            a.ape_mat = form.cleaned_data['Apellido_Materno']
-            a.edad = form.cleaned_data['Edad']
-            a.direccion = form.cleaned_data['Direccion']
-            a.tel = form.cleaned_data['Telefono']
-            a.email = form.cleaned_data['Email']
+        a.save()
 
-            a.save()
+        # form = Form_Adoptante()
+        ctx={'mensaje': 'Adoptante guardado con exito!'}
 
-            form = Form_Adoptante()
-            ctx={'mensaje': 'Adoptante guardado con exito!','form':form}
+    else:
 
-        else:
-
-            ctx={'mensaje': 'Error en los datos.','form':form}
+        ctx={'mensaje': 'Error en los datos.'}
 
     return render(request,'Adopcion/alta_adoptante.html',ctx)
 
+@login_required(login_url='/')
 def Con_Adoptante(request):
-	obj = Adoptante.objects.all()
-	ctx = {'mensaje':obj}
+    obj = Adoptante.objects.all()
+    ctx = {'mensaje':obj}
 
-	return render(request,'Adopcion/con_adoptante.html',ctx)
+    return render(request,'Adopcion/con_adoptante.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Ado_Edo(request):
     form = Form_Ado_Edo()
     ctx={'mensaje':'Ingrese datos','form':form}
@@ -59,72 +59,88 @@ def Alta_Ado_Edo(request):
 
         else:
             ctx={'mensaje': 'Error en los datos.','form':form}
-
     return render(request,'Adopcion/alta_ado_edo.html',ctx)
 
+@login_required(login_url='/')
 def Con_Ado_Edo(request):
-	obj = Ado_Edo.objects.all()
-	ctx = {'mensaje':obj}
+    obj = Ado_Edo.objects.all()
+    ctx = {'mensaje':obj}
 
-	return render(request,'Adopcion/con_ado_edo.html',ctx)
+    return render(request,'Adopcion/con_ado_edo.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Adopcion(request):
-    form = Form_Adopcion()
-    ctx={'mensaje':'Ingrese datos','form':form}
+    # form = Form_Adopcion()
+    adoptantes = Adoptante.objects.all()
+    animales = Animal.objects.all()
+    estados = Ado_Edo.objects.all()
+    ctx={'mensaje':'Ingrese datos','adoptantes':adoptantes,'animales':animales,'estados':estados}
 
-    if request.method=='POST':
-        form = Form_Adopcion(request.POST,request.FILES)
+    if request.POST:
 
-        if form.is_valid():
-            a = Adopcion()
+        adop = request.POST.get('adoptante')
+        adop = Afiliado.objects.get(id=adop)
 
-            a.folio = form.cleaned_data['Folio']
-            a.id_adoptante = form.cleaned_data['Adoptante']
-            a.id_animal = form.cleaned_data['Animal']
-            a.id_ado_edo = form.cleaned_data['Estado']
+        ani = request.POST.get('animal')
+        ani = Animal.objects.get(id=ani)
 
-            a.save()
+        edo = request.POST.get('estado')
+        edo = Ado_Edo.objects.get(id=edo)
 
-            form = Form_Adopcion()
-            ctx={'mensaje': 'Adopcion guardado con exito!','form':form}
+        a = Adopcion()
 
-        else:
-            ctx={'mensaje': 'Error en los datos.','form':form}
+        a.folio = request.POST.get('folio')
+        a.id_adoptante = adop
+        a.id_animal = ani
+        a.id_ado_edo = edo
+
+        a.save()
+
+        # form = Form_Adopcion()
+        ctx={'mensaje': 'Adopcion guardado con exito!','adoptantes':adoptantes,'animales':animales,'estados':estados}
+
+    else:
+        ctx={'mensaje': 'Error en los datos.','adoptantes':adoptantes,'animales':animales,'estados':estados}
 
     return render(request,'Adopcion/alta_adopcion.html',ctx)
 
+@login_required(login_url='/')
 def Con_Adopcion(request):
-	obj = Adopcion.objects.all()
-	ctx = {'mensaje':obj}
+    obj = Adopcion.objects.all()
+    ctx = {'mensaje':obj}
 
-	return render(request,'Adopcion/con_adopcion.html',ctx)
+    return render(request,'Adopcion/con_adopcion.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Visita(request):
-    form = Form_Visita()
-    ctx={'mensaje':'Ingrese datos','form':form}
+    adopciones = Adopcion.objects.all()
 
-    if request.method=='POST':
-        form = Form_Visita(request.POST,request.FILES)
+    # form = Form_Visita()
+    ctx={'mensaje':'Ingrese datos','adopciones':adopciones}
 
-        if form.is_valid():
-            a = Adopcion()
+    if request.POST:
+        adop = request.POST.get('adopciones')
+        adop = Adopcion.objects.get(id=adop)
 
-            a.id_adopcion = form.cleaned_data['Adopcion']
-            a.no_visita = form.cleaned_data['No_de_Visita']
-            a.descr = form.cleaned_data['Descripcion']
+        a = Adopcion()
 
-            a.save()
+        a.id_adopcion = adop
+        a.no_visita = request.POST.get('visita')
+        a.descr = request.POST.get('descr')
 
-            form = Form_Visita()
-            ctx={'mensaje': 'Visita guardado con exito!','form':form}
+        a.save()
 
-        else:
-            ctx={'mensaje': 'Error en los datos.','form':form}
+        # form = Form_Visita()
+        ctx={'mensaje': 'Visita guardado con exito!','adopciones':adopciones}
+
+    else:
+        ctx={'mensaje': 'Error en los datos.','adopciones':adopciones}
 
     return render(request,'Adopcion/alta_visita.html',ctx)
 
+@login_required(login_url='/')
 def Con_Visita(request):
-	obj = Visita.objects.all()
-	ctx = {'mensaje':obj}
+    obj = Visita.objects.all()
+    ctx = {'mensaje':obj}
 
-	return render(request,'Adopcion/con_visita.html',ctx)
+    return render(request,'Adopcion/con_visita.html',ctx)
