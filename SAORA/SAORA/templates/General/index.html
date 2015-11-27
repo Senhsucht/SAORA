@@ -1,9 +1,81 @@
 {% extends "General/base.html"%}
 {% block title %} Bienvenido {% endblock %}
 {% block content %}
+<!-- Intro Header -->
+<header class="intro">
+		<div class="intro-body">
+				<div class="container">
+						<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+										<h1 class="brand-heading">Fundación Ángeles Del Reino Animal A.C</h1>
+										<p class="intro-text"> Enfocados en el bienestar de la flora, fauna y medio ambiente.</p>
+										<a href="#about" class="btn btn-circle page-scroll">
+												<i class="fa fa-angle-double-down animated"></i>
+										</a>
+								</div>
+						</div>
+				</div>
+		</div>
+</header>
 
-	<div class="container">
-		<h3> {{mensaje}} </h3>
-	</div>
+<!-- About Section -->
+<section id="about" class="container content-section text-center">
+		<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+						<h2>Acerca de nosotros</h2>
+						<p>Somos una fundacion sin fines de lucreo</p>
+						<p>Enfocados en el bienestar de la flora, fauna y medio ambiente.</p>
+						<!-- <p></p> -->
+						<img class="img-responsive" height="960" width="720" src="/static/img/nosotros.jpg" alt="miembros" center>
+				</div>
+		</div>
+</section>
+
+<!-- Eventos Section -->
+<section id="eventos" class="container content-section text-center">
+		<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+						<h2>Eventos</h2>
+						<p>Zumbaton 2014</p>
+						<!-- <p>Enfocados en el bienestar de la flora, fauna y medio ambiente.</p> -->
+						<!-- <p></p> -->
+						<table>
+								<tr>
+									<td><img class="img-responsive" height="350" width="350" src="/static/img/zumba1.jpg" alt="miembros" ></td>
+									<td><img class="img-responsive" height="350" width="350" src="/static/img/zumba2.jpg" alt="miembros" ></td>
+									</tr>
+						</table>
+						<table>
+								<tr>
+									<td><img class="img-responsive" height="350" width="350" src="/static/img/zumba3.jpg" alt="miembros" ></td>
+									<td><img class="img-responsive" height="350" width="350" src="/static/img/zumba4.jpg" alt="miembros" ></td>
+									</tr>
+						</table>
+
+						<p>Corre con tu mejor amigo</p>
+
+						<img class="img-responsive" height="400" width="400" src="/static/img/camina3.jpg" alt="miembros" align="middle">
+
+
+				</div>
+		</div>
+</section>
+
+<section id="redes" class="container content-section text-center">
+		<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+				<h2>Redes Sociales</h2>
+				<a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/Fundaci%C3%B3n-%C3%81ngeles-Del-Reino-Animal-AC-813378692047373/">
+					<span class="fa fa-facebook"></span>
+				</a>
+				<a class="btn btn-social-icon btn-twitter">
+			    <span class="fa fa-twitter"></span>
+			  </a>
+				<a class="btn btn-social-icon btn-google">
+			    <span class="fa fa-google"></span>
+			  </a>
+		</div>
+</section>
+
 
 {% endblock %}

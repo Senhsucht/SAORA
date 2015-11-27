@@ -1,7 +1,7 @@
 {% extends "General/base.html"%}
 {% block title %} Reporte de adopciones {% endblock %}
 {% block content %}
-
+<section class="container content-section text-center">
 	<div class="container">
 		<h3>Reporte de adopciones</h3>
 	</div>
@@ -29,7 +29,7 @@
 								<td> {{item.id_animal}} </td>
 								<td> {{item.id_ado_edo}} </td>
                 <td> {{item.ult_act}} </td>
-                
+
 							</tr>
 						{% endfor %}
 					</tbody>
@@ -38,5 +38,5 @@
 		</section>
 	</div>
 
-
+</section>
 {% endblock %}

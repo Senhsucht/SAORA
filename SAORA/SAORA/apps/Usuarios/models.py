@@ -8,26 +8,26 @@ from django.contrib.auth.models import User
 # 	tusr = models.CharField(max_length=10,unique=True)
 # 	descr = models.CharField(max_length=50)
 # 	ult_act = models.DateField(auto_now_add=True)
-# 
+#
 # 	def __unicode__(self):
 # 		return "%s : %s"%(self.tusr,self.descr)
 
 class Tafil(models.Model):
-	tafil = models.CharField(max_length=10,unique=True)
-	descr = models.CharField(max_length=50)
+	tafil = models.CharField(max_length=25,unique=True)
+	descr = models.CharField(max_length=100)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
 		return "%s : %s"%(self.tafil,self.descr)
 
 class Afiliado(models.Model):
-	nombre = models.CharField(max_length=15)
-	ape_pat = models.CharField(max_length=15)
-	ape_mat = models.CharField(max_length=15)
+	nombre = models.CharField(max_length=25)
+	ape_pat = models.CharField(max_length=25)
+	ape_mat = models.CharField(max_length=25)
 	edad = models.PositiveIntegerField()
-	direccion  = models.CharField(max_length=70)
+	direccion  = models.CharField(max_length=100)
 	tel = models.PositiveIntegerField()
-	email = models.CharField(max_length=35)
+	email = models.CharField(max_length=45)
 	id_tafil = models.ForeignKey('Tafil')
 	ult_act = models.DateField(auto_now_add=True)
 	imagen = models.ImageField(upload_to='afiliados/')

@@ -4,21 +4,21 @@ from SAORA.apps.Rescate.models import *
 # Create your models here.
 
 class Ado_Edo(models.Model):
-	estado = models.CharField(max_length=10,unique=True)
-	descr = models.CharField(max_length=50)
+	estado = models.CharField(max_length=25,unique=True)
+	descr = models.CharField(max_length=100)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
 		return "%s"%(self.estado)
 
 class Adoptante(models.Model):
-	nombre = models.CharField(max_length=15)
-	ape_pat = models.CharField(max_length=15)
-	ape_mat = models.CharField(max_length=15)
+	nombre = models.CharField(max_length=25)
+	ape_pat = models.CharField(max_length=25)
+	ape_mat = models.CharField(max_length=25)
 	edad = models.IntegerField()
-	direccion  = models.CharField(max_length=70)
+	direccion  = models.CharField(max_length=100)
 	tel = models.IntegerField()
-	email = models.CharField(max_length=35)
+	email = models.CharField(max_length=45)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
@@ -37,7 +37,7 @@ class Adopcion(models.Model):
 class Visita(models.Model):
 	id_adopcion = models.ForeignKey('Adopcion')
 	no_visita = models.IntegerField()
-	descr = models.CharField(max_length=50)
+	descr = models.CharField(max_length=100)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):

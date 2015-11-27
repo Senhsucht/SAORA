@@ -6,16 +6,16 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 class Tanimal(models.Model):
-	tanimal = models.CharField(max_length=20,unique=True)
-	descr = models.CharField(max_length=50)
+	tanimal = models.CharField(max_length=25,unique=True)
+	descr = models.CharField(max_length=100)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
 		return "%s : %s"%(self.tanimal,self.descr)
 
 class Raza(models.Model):
-	raza = models.CharField(max_length=20,unique=True)
-	descr = models.CharField(max_length=50)
+	raza = models.CharField(max_length=25,unique=True)
+	descr = models.CharField(max_length=100)
 	id_tanimal = models.ForeignKey('Tanimal')
 	ult_act = models.DateField(auto_now_add=True)
 
@@ -23,7 +23,7 @@ class Raza(models.Model):
 		return "%s : %s"%(self.raza,self.descr)
 
 class Animal(models.Model):
-	nombre = models.CharField(max_length=20)
+	nombre = models.CharField(max_length=25)
 	id_raza = models.ForeignKey('Raza')
 	edad = models.IntegerField()
 	ult_act = models.DateField(auto_now_add=True)
@@ -42,7 +42,7 @@ class Rescate(models.Model):
 	folio = models.IntegerField(unique=True)
 	id_afil = models.ForeignKey('Usuarios.Afiliado')
 	id_animal = models.ForeignKey('Animal')
-	lugar = models.CharField(max_length=50)
+	lugar = models.CharField(max_length=100)
 	ult_act = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
