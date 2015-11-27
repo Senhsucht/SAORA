@@ -40,25 +40,23 @@ def Con_Adoptante(request):
 
 @login_required(login_url='/')
 def Alta_Ado_Edo(request):
-    form = Form_Ado_Edo()
-    ctx={'mensaje':'Ingrese datos','form':form}
+    # form = Form_Ado_Edo()
+    ctx={'mensaje':'Ingrese datos'}
 
-    if request.method=='POST':
-        form = Form_Ado_Edo(request.POST,request.FILES)
-
-        if form.is_valid():
+    if request.POST:
             a = Ado_Edo()
 
-            a.estado = form.cleaned_data['Estado']
-            a.descr = form.cleaned_data['Descripcion']
+            a.estado = request.POST.get('estado')
+            a.descr = request.POST.get('descr')
 
             a.save()
 
-            form = Form_Ado_Edo()
-            ctx={'mensaje': 'Adoptante guardado con exito!','form':form}
+            # form = Form_Ado_Edo()
+            ctx={'mensaje': 'Adoptante guardado con exito!'}
 
-        else:
-            ctx={'mensaje': 'Error en los datos.','form':form}
+    else:
+        ctx={'mensaje': 'Error en los datos.'}
+
     return render(request,'Adopcion/alta_ado_edo.html',ctx)
 
 @login_required(login_url='/')

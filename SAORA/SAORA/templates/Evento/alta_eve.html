@@ -3,16 +3,16 @@
 {% block content %}
 <section class="container content-section text-center">
 
-<div class="bs-docs-section">
+<!-- <div class="bs-docs-section">
 	<div class="container">
 		<h3 class="page-header">Registro de evento</h3>
 		<h5> {{mensaje}} </h5>
-	</div>
+	</div> -->
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="row">
 
-				<form class ="col-md-4"action="/eve/alta_eve/" method="POST" enctype="multipart/form-data">
+				<!-- <form class ="col-md-4"action="/eve/alta_eve/" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-6">
@@ -22,7 +22,86 @@
 							</div>
 						</div>
 					</div>
+				</form> -->
+
+				<form class="form-horizontal" action="/eve/alta_eve/" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Registro de evento</legend>
+				<h4>{{mensaje}}</h4>
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="nombre">Nombre</label>
+				  <div class="col-md-4">
+				  <input id="nombre" max_length="50" name="nombre" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="descr">Descripcion</label>
+				  <div class="col-md-4">
+				  <input id="descr" max_length="100" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="lugar">Lugar</label>
+				  <div class="col-md-4">
+				  <input id="lugar" max_length="50" name="lugar" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="fecha">Fecha</label>
+				  <div class="col-md-4">
+				  <input id="fecha" name="fecha" type="datetime-local" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Select Basic -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="teve">Tipo de evento</label>
+				  <div class="col-md-4">
+				    <select id="teve" name="teve" class="form-control" required="">
+							{% for i in tevento %}
+								<option value="{{i.id}}">{{i.tevento}} </option>
+							{% endfor %}
+				    </select>
+				  </div>
+				</div>
+
+				<!-- Select Basic -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="estado">Estado</label>
+				  <div class="col-md-4">
+				    <select id="estado" name="estado" class="form-control" required="">
+							{% for i in estado %}
+								<option value="{{i.id}}">{{i.estado}} </option>
+							{% endfor %}
+				    </select>
+				  </div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="boton"></label>
+				  <div class="col-md-4">
+				    <button id="boton" name="boton" class="btn btn-primary">Registrar</button>
+				  </div>
+				</div>
+
+				</fieldset>
 				</form>
+
 			</div>
 		</div>
 

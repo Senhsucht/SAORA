@@ -3,15 +3,15 @@
 {% block content %}
 <section class="container content-section text-center">
 
-<div class="bs-docs-section">
+<!-- <div class="bs-docs-section">
 	<div class="container">
 		<h3 class="page-header">Registro de pratrocinadores de evento</h3>
 		<h5> {{mensaje}} </h5>
-	</div>
+	</div> -->
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="row">
-
+<!--
 				<form class ="col-md-4"action="/eve/alta_eve_patro/" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<div class="row">
@@ -22,7 +22,60 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</form> -->
+
+				<form class="form-horizontal" action="/eve/alta_eve_patro/" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+			<fieldset>
+
+			<!-- Form Name -->
+			<legend>Registro de patrocinador por evento</legend>
+			<h4> {{mensaje}} </h4>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="eve">Evento</label>
+			  <div class="col-md-4">
+			    <select id="eve" name="eve" class="form-control" required="">
+						{% for i in evento %}
+							<option value="{{i.id}}">{{i.nombre}} </option>
+						{% endfor %}
+			    </select>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="patro">Patrocinador</label>
+			  <div class="col-md-4">
+			    <select id="patro" name="patro" class="form-control" required="">
+						{% for i in patrocinador %}
+							<option value="{{i.id}}">{{i.nombre}} {{i.ape_pat}} {{i.ape_mat}}</option>
+						{% endfor %}
+			    </select>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="descr">Descripcion</label>
+			  <div class="col-md-4">
+			  <input id="descr" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+
+			  </div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="boton"></label>
+			  <div class="col-md-4">
+			    <button id="boton" name="boton" class="btn btn-primary">Registrar</button>
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+
 			</div>
 		</div>
 

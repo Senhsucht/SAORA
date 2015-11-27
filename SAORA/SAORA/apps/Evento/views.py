@@ -5,24 +5,21 @@ from .forms import *
 # Create your views here.
 
 def Alta_Eve_Edo(request):
-    form = Form_Eve_Edo()
-    ctx={'mensaje': 'Ingrese datos de nuevo estado de evento','form':form}
+    # form = Form_Eve_Edo()
+    ctx={'mensaje': 'Ingrese datos de nuevo estado de evento'}
 
-    if request.method == 'POST':
-        form = Form_Eve_Edo(request.POST,request.FILES)
+    if request.POST:
+        t= Eve_Edo()
 
-        if form.is_valid():
-            t= Eve_Edo()
+        t.eve_edo = request.POST.get('estado')
+        t.descr = request.POST.get('descr')
 
-            t.eve_edo = form.cleaned_data['Estado_de_Evento']
-            t.descr = form.cleaned_data['Descripcion']
+        t.save()
+        # form = Form_Eve_Edo()
 
-            t.save()
-            form = Form_Eve_Edo()
-
-            ctx={'mensaje':'Registro exitoso!','form':form}
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+        ctx={'mensaje':'Registro exitoso!'}
+    else:
+        ctx={'mensaje':'Error en los datos.'}
 
     return render(request,'Evento/alta_eveedo.html',ctx)
 
@@ -33,24 +30,21 @@ def Con_Eve_Edo(request):
     return render(request,'Evento/con_eveedo.html',ctx)
 
 def Alta_teve(request):
-    form = Form_Tevento()
-    ctx={'mensaje': 'Ingrese datos de nuevo tipo de evento','form':form}
+    # form = Form_Tevento()
+    ctx={'mensaje': 'Ingrese datos de nuevo tipo de evento'}
 
-    if request.method == 'POST':
-        form = Form_Tevento(request.POST,request.FILES)
+    if request.POST:
+        t= Tevento()
 
-        if form.is_valid():
-            t= Tevento()
+        t.tevento = request.POST.get('teve')
+        t.descr = request.POST.get('descr')
 
-            t.tevento = form.cleaned_data['Tipo_de_Evento']
-            t.descr = form.cleaned_data['Descripcion']
+        t.save()
+        # form = Form_Tevento()
 
-            t.save()
-            form = Form_Tevento()
-
-            ctx={'mensaje':'Registro exitoso!','form':form}
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+        ctx={'mensaje':'Registro exitoso!'}
+    else:
+        ctx={'mensaje':'Error en los datos.'}
 
     return render(request,'Evento/alta_teve.html',ctx)
 
@@ -61,26 +55,29 @@ def Con_teve(request):
     return render(request,'Evento/con_teve.html',ctx)
 
 def Alta_Eve_Patro(request):
-    form = Form_Eve_Patro()
-    ctx={'mensaje': 'Ingrese datos de nuevo patrocinador de evento','form':form}
+    # form = Form_Eve_Patro()
+    evento = Evento.objects.all()
+    patrocinador = Patrocinador.objects.all()
 
-    if request.method == 'POST':
-        form = Form_Eve_Patro(request.POST,request.FILES)
+    ctx={'mensaje': 'Ingrese datos de nuevo patrocinador de evento','evento':evento,'patrocinador':patrocinador}
 
-        if form.is_valid():
-            t= Eve_Patro()
+    if request.POST:
+        t= Eve_Patro()
 
-            t.id_evento = form.cleaned_data['Evento']
-            t.id_patrocinador = form.cleaned_data['Patrocinador']
-            t.descr = form.cleaned_data['Descripcion']
+        patro = Patrocinador.objects.get(id=request.POST.get('patro'))
+        eve = Evento.objects.get(id=request.POST.get('eve'))
 
-            t.save()
-            form = Form_Eve_Patro()
+        t.id_evento = eve
+        t.id_patrocinador = patro
+        t.descr = request.POST.get('descr')
 
-            ctx={'mensaje':'Registro exitoso!','form':form}
+        t.save()
+        # form = Form_Eve_Patro()
 
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+        ctx={'mensaje':'Registro exitoso!','evento':evento,'patrocinador':patrocinador}
+
+    else:
+        ctx={'mensaje':'Error en los datos.','evento':evento,'patrocinador':patrocinador}
 
     return render(request,'Evento/alta_eve_patro.html',ctx)
 
@@ -91,29 +88,26 @@ def Con_Eve_Patro(request):
     return render(request,'Evento/con_eve_patro.html',ctx)
 
 def Alta_Patrocinador(request):
-    form = Form_Patrocinador()
-    ctx={'mensaje': 'Ingrese datos de nuevo patrocinador','form':form}
+    # form = Form_Patrocinador()
+    ctx={'mensaje': 'Ingrese datos de nuevo patrocinador'}
 
-    if request.method == 'POST':
-        form = Form_Patrocinador(request.POST,request.FILES)
+    if request.POST:
+        t= Patrocinador()
 
-        if form.is_valid():
-            t= Patrocinador()
+        t.nombre = request.POST.get('nombre')
+        t.ape_pat = request.POST.get('ape_pat')
+        t.ape_mat = request.POST.get('ape_mat')
+        t.rfc = request.POST.get('rfc')
+        t.tel = request.POST.get('tel')
+        t.email = request.POST.get('email')
 
-            t.nombre = form.cleaned_data['Nombre']
-            t.ape_pat = form.cleaned_data['Apellido_Paterno']
-            t.ape_mat = form.cleaned_data['Apellido_Materno']
-            t.rfc = form.cleaned_data['RFC']
-            t.tel = form.cleaned_data['Telefono']
-            t.email = form.cleaned_data['Email']
+        t.save()
+        # form = Form_Patrocinador()
 
-            t.save()
-            form = Form_Patrocinador()
+        ctx={'mensaje':'Registro exitoso!'}
 
-            ctx={'mensaje':'Registro exitoso!','form':form}
-
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+    else:
+        ctx={'mensaje':'Error en los datos.'}
 
     return render(request,'Evento/alta_patro.html',ctx)
 
@@ -124,29 +118,32 @@ def Con_Patrocinador(request):
     return render(request,'Evento/con_patro.html',ctx)
 
 def Alta_Evento(request):
-    form = Form_Evento()
-    ctx={'mensaje': 'Ingrese datos de nuevo evento','form':form}
+    # form = Form_Evento()
+    tevento = Tevento.objects.all()
+    estado = Eve_Edo.objects.all()
 
-    if request.method == 'POST':
-        form = Form_Evento(request.POST,request.FILES)
+    ctx={'mensaje': 'Ingrese datos de nuevo evento','tevento':tevento,'estado':estado}
 
-        if form.is_valid():
-            t= Evento()
+    if request.POST:
+        t= Evento()
 
-            t.nombre = form.cleaned_data['Nombre']
-            t.descr = form.cleaned_data['Descripcion']
-            t.lugar = form.cleaned_data['Lugar']
-            t.fecha = form.cleaned_data['Fecha_y_Hora']
-            t.id_tevento = form.cleaned_data['Tipo_de_Evento']
-            t.id_eve_edo = form.cleaned_data['Estado_de_Evento']
+        teve = Tevento.objects.get(id=request.POST.get('teve'))
+        edo = Eve_Edo.objects.get(id=request.POST.get('estado'))
 
-            t.save()
-            form = Form_Evento()
+        t.nombre = request.POST.get('nombre')
+        t.descr = request.POST.get('descr')
+        t.lugar = request.POST.get('lugar')
+        t.fecha = request.POST.get('fecha')
+        t.id_tevento = teve
+        t.id_eve_edo = edo
 
-            ctx={'mensaje':'Registro exitoso!','form':form}
+        t.save()
+        # form = Form_Evento()
 
-        else:
-            ctx={'mensaje':'Error en los datos.','form':form}
+        ctx={'mensaje':'Registro exitoso!','tevento':tevento,'estado':estado}
+
+    else:
+        ctx={'mensaje':'Error en los datos.','tevento':tevento,'estado':estado}
 
     return render(request,'Evento/alta_eve.html',ctx)
 

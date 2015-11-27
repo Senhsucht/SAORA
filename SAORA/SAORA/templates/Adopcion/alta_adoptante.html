@@ -35,7 +35,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Nombre</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="nombre" type="text"  class="form-control input-md">
+					  <input id="textinput" max_length="25" name="nombre" type="text"  class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span>   -->
 					  </div>
 					</div>
@@ -44,7 +44,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Apellido Paterno</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="ape_pat" type="text" class="form-control input-md">
+					  <input id="textinput" max_length="25" name="ape_pat" type="text" class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span>   -->
 					  </div>
 					</div>
@@ -53,7 +53,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Apellido Materno</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="ape_mat" type="text" class="form-control input-md">
+					  <input id="textinput" max_length="25" name="ape_mat" type="text" class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span>   -->
 					  </div>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Edad</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="edad" type="number" min="1" class="form-control input-md">
+					  <input id="textinput" name="edad" type="number" min="1" class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span>   -->
 					  </div>
 					</div>
@@ -71,7 +71,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textarea">Direccion</label>
 					  <div class="col-md-4">
-					    <textarea class="form-control" id="textarea" name="direccion"></textarea>
+					    <textarea class="form-control" max_length="100" id="textarea" name="direccion" required></textarea>
 					  </div>
 					</div>
 
@@ -79,7 +79,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Telefono</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="telefono" type="number" min="0"class="form-control input-md">
+					  <input id="textinput" name="telefono" type="number" min="0" class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span> -->
 					  </div>
 					</div>
@@ -88,7 +88,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="textinput">Email</label>
 					  <div class="col-md-4">
-					  <input id="textinput" name="email" type="email"  class="form-control input-md">
+					  <input id="textinput" name="email" type="email" max_length="45" class="form-control input-md" required>
 					  <!-- <span class="help-block">help</span> -->
 					  </div>
 					</div>

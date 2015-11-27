@@ -3,16 +3,16 @@
 {% block content %}
 <section class="container content-section text-center">
 
-<div class="bs-docs-section">
+<!-- <div class="bs-docs-section">
 	<div class="container">
 		<h3 class="page-header">Registro de tipo de animal</h3>
 		<h5> {{mensaje}} </h5>
-	</div>
+	</div> -->
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="row">
 
-				<form class ="col-md-4"action="/usr/alta_tanimal/" method="POST" enctype="multipart/form-data">
+				<!-- <form class ="col-md-4"action="/usr/alta_tanimal/" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-6">
@@ -22,7 +22,45 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</form> -->
+
+
+				<form class="form-horizontal" action="/res/alta_tanimal/" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<fieldset>
+
+					<!-- Form Name -->
+					<legend>Registro de tipo de evento</legend>
+					<h4> {{mensaje}} </h4>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="teve">Tipo de animal</label>
+						<div class="col-md-4">
+						<input id="teve" max_length="25" name="tani" type="text" placeholder="" class="form-control input-md" required="">
+
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="descr">Descripcion</label>
+						<div class="col-md-4">
+						<input id="descr" max_length="100" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+
+						</div>
+					</div>
+
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="boton"></label>
+						<div class="col-md-4">
+							<button id="boton" name="boton" class="btn btn-primary">Registrar</button>
+						</div>
+					</div>
+
+					</fieldset>
+					</form>
 			</div>
 		</div>
 

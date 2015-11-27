@@ -35,7 +35,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="adopcion">Adopcion</label>
 				  <div class="col-md-4">
-				    <select id="adopcion" name="adopcion" class="form-control">
+				    <select id="adopcion" name="adopcion" class="form-control" required>
 							{% for i in adopciones %}
 								<option value="{{i.id}}">{{i.folio}}</option>
 							{% endfor %}
@@ -47,7 +47,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="visita">No de visita</label>
 				  <div class="col-md-4">
-				  <input id="visita" name="visita" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="visita" name="visita" type="number" min="1" placeholder="" class="form-control input-md" required="">
 
 				  </div>
 				</div>
@@ -56,7 +56,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="descr">Descripcion</label>
 				  <div class="col-md-4">
-				  <input id="descr" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="descr" name="descr" max_length="100" type="text" placeholder="" class="form-control input-md" required="">
 
 				  </div>
 				</div>

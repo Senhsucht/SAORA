@@ -2,16 +2,16 @@
 {% block title %} Registro de estados de adopcion {% endblock %}
 {% block content %}
 <section class="container content-section text-center">
-
+<!-- 
 <div class="bs-docs-section">
 	<div class="container">
 		<h3 class="page-header">Registro de estados de adopcion</h3>
 		<h5> {{mensaje}} </h5>
-	</div>
+	</div> -->
 	<div class="container-wrapper">
 		<div class="container">
 			<div class="row">
-
+<!--
 				<form class ="col-md-4"action="/adop/alta_ado_edo/" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<div class="row">
@@ -22,7 +22,46 @@
 							</div>
 						</div>
 					</div>
+				</form> -->
+
+				<form class="form-horizontal" action="/adop/alta_ado_edo/" method="POST" enctype="multipart/form-data">
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Registro de estados de adopcion</legend>
+				<h4> {{mensaje}} </h4>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="estado">Estado</label>
+				  <div class="col-md-4">
+				  <input id="estado" name="estado" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="descr">Descripcion</label>
+				  <div class="col-md-4">
+				  <input id="descr" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+
+				  </div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="singlebutton"></label>
+				  <div class="col-md-4">
+				    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Registro</button>
+				  </div>
+				</div>
+
+				</fieldset>
 				</form>
+
+
+
 			</div>
 		</div>
 

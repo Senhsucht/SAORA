@@ -28,7 +28,7 @@ def Alta_Animal(request):
             ctx={'mensaje': 'Error en los datos.','form':form}
 
     return render(request,'Rescate/alta_animal.html',ctx)
-
+    
 def Con_Animal(request):
 	obj = Animal.objects.all()
 	ctx = {'mensaje':obj}
@@ -36,24 +36,21 @@ def Con_Animal(request):
 	return render(request,'Rescate/con_animal.html',ctx)
 
 def Alta_tanimal(request):
-        form = Form_Tanimal()
-        ctx={'mensaje': 'Ingrese datos:','form':form}
+        # form = Form_Tanimal()
+        ctx={'mensaje': 'Ingrese datos:'}
 
-        if request.method == 'POST':
-            form = Form_Tanimal(request.POST,request.FILES)
+        if request.POST:
+            a = Tanimal()
 
-            if form.is_valid():
-                a = Tanimal()
+            a.tanimal =  request.POST.get('tani')
+            a.descr = request.POST.get('descr')
 
-                a.tanimal =  form.cleaned_data['Tipo_de_Animal']
-                a.descr = form.cleaned_data['Descripcion']
+            a.save()
 
-                a.save()
-
-                form = Form_Tanimal()
-                ctx={'mensaje': 'Tipo de animal guardado con exito!','form':form}
-            else:
-                ctx={'mensaje': 'Error en los datos.','form':form}
+            # form = Form_Tanimal()
+            ctx={'mensaje': 'Tipo de animal guardado con exito!'}
+        else:
+            ctx={'mensaje': 'Error en los datos.'}
 
         return render(request,'Rescate/alta_tanimal.html',ctx)
 
@@ -64,26 +61,26 @@ def Con_tanimal(request):
 	return render(request,'Rescate/con_tanimal.html',ctx)
 
 def Alta_Raza(request):
-        form = Form_Raza()
-        ctx={'mensaje': 'Ingrese datos:','form':form}
+        # form = Form_Raza()
+        tanimal = Tanimal.objects.all()
+        ctx={'mensaje': 'Ingrese datos:','tanimal':tanimal}
 
-        if request.method == 'POST':
-            form = Form_Raza(request.POST,request.FILES)
+        if request.POST:
+            a = Raza()
 
-            if form.is_valid():
-                a = Raza()
+            tani = Tanimal.objects.get(id=request.POST.get('tanimal'))
 
-                a.raza = forms.cleaned_data['Raza']
-                a.tanimal =  form.cleaned_data['Tipo_de_Animal']
-                a.descr = form.cleaned_data['Descripcion']
+            a.raza = request.POST.get('raza')
+            a.id_tanimal =  tani
+            a.descr = request.POST.get('descr')
 
-                a.save()
+            a.save()
 
-                form = Form_Raza()
-                ctx={'mensaje': 'Raza guardado con exito!','form':form}
+            # form = Form_Raza()
+            ctx={'mensaje': 'Raza guardado con exito!','tanimal':tanimal}
 
-            else:
-                ctx={'mensaje': 'Error en los datos.','form':form}
+        else:
+            ctx={'mensaje': 'Error en los datos.','tanimal':tanimal}
 
         return render(request,'Rescate/alta_raza.html',ctx)
 

@@ -37,7 +37,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="textinput">Folio</label>
 				  <div class="col-md-4">
-				  <input id="textinput" name="folio" type="text"class="form-control input-md">
+				  <input id="textinput" name="folio" type="number"class="form-control input-md" required>
 				  <!-- <span class="help-block">help</span> -->
 				  </div>
 				</div>
@@ -46,7 +46,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="selectbasic">Adoptante</label>
 				  <div class="col-md-4">
-				    <select id="selectbasic" name="adoptante" class="form-control">
+				    <select id="selectbasic" name="adoptante" class="form-control"required>
 							{% for i in adotantes %}
 								<option value="{{i.id}}">{{i.ape_pat}} {{i.ape_mat}} , {{i.nombre}}</option>
 							{% endfor %}
@@ -58,7 +58,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="selectbasic">Animal</label>
 				  <div class="col-md-4">
-				    <select id="selectbasic" name="animal" class="form-control">
+				    <select id="selectbasic" name="animal" class="form-control"required>
 							{% for i in animales %}
 								<option value="{{i.id}}">{{i.nombre}}</option>
 							{% endfor %}
@@ -70,7 +70,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="selectbasic">Estado</label>
 				  <div class="col-md-4">
-				    <select id="selectbasic" name="estado" class="form-control">
+				    <select id="selectbasic" name="estado" class="form-control"required>
 							{% for i in estados %}
 								<option value="{{i.id}}">{{i.estado}}</option>
 							{% endfor %}
