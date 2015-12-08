@@ -6,7 +6,7 @@ class Form_Afil(forms.Form):
 	Nombre = forms.CharField(max_length=15)
 	Apellido_Paterno = forms.CharField(max_length=15)
 	Apellido_Materno = forms.CharField(max_length=15)
-	Edad = forms.IntegerField()
+	Edad = forms.IntegerField(min_value=0)
 	Direccion  = forms.CharField(max_length=70)
 	Telefono  = forms.IntegerField(min_value=0)
 	Email = forms.CharField(max_length=35)

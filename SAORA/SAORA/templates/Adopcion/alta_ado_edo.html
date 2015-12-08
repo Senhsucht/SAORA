@@ -2,7 +2,7 @@
 {% block title %} Registro de estados de adopcion {% endblock %}
 {% block content %}
 <section class="container content-section text-center">
-<!-- 
+<!--
 <div class="bs-docs-section">
 	<div class="container">
 		<h3 class="page-header">Registro de estados de adopcion</h3>
@@ -25,6 +25,7 @@
 				</form> -->
 
 				<form class="form-horizontal" action="/adop/alta_ado_edo/" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
 				<fieldset>
 
 				<!-- Form Name -->
@@ -35,7 +36,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="estado">Estado</label>
 				  <div class="col-md-4">
-				  <input id="estado" name="estado" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="estado" name="estado" max_length="25" type="text" placeholder="" class="form-control input-md" required="">
 
 				  </div>
 				</div>
@@ -44,7 +45,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="descr">Descripcion</label>
 				  <div class="col-md-4">
-				  <input id="descr" name="descr" type="text" placeholder="" class="form-control input-md" required="">
+				  <input id="descr" name="descr" max_length="100" type="text" placeholder="" class="form-control input-md" required="">
 
 				  </div>
 				</div>

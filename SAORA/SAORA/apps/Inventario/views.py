@@ -3,9 +3,10 @@ from .models import *
 from SAORA.apps.Evento.models import *
 from SAORA.apps.Adopcion.models import *
 from SAORA.apps.Usuarios.models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/')
 def Alta_Inventario(request):
     productos = Producto.objects.all()
     afiliados = Afiliado.objects.all()
@@ -69,18 +70,20 @@ def Alta_Inventario(request):
 
             h.save()
             esta.save()
+            ctx={'mensaje':'Registrado con exito!','productos':productos,'eventos':eventos,'afiliados':afiliados,'donantes':donantes}
     else:
-
         ctx={'mensaje': 'Error en los datos.','productos':productos,'eventos':eventos,'afiliados':afiliados,'donantes':donantes}
 
     return render(request,'Inventario/alta_inv.html',ctx)
 
+@login_required(login_url='/')
 def Con_Inventario(request):
     obj = Inventario.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Inventario/con_inv.html',ctx)
 
+@login_required(login_url='/')
 def Con_Inv_Estado(request):
     obj = Inv_Hist.objects.all()
     ctx = {'mensaje':obj}
@@ -99,6 +102,7 @@ def Con_Inv_Estado(request):
 
     return render(request,'Inventario/con_inv_edo.html',ctx)
 
+@login_required(login_url='/')
 def Baja_Inventario(request):
         productos = Producto.objects.all()
         afiliados = Afiliado.objects.all()
@@ -136,6 +140,7 @@ def Baja_Inventario(request):
 
         return render(request,'Inventario/baja_inv.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Producto(request):
     ctx={'mensaje':'Ingrese datos del producto'}
 
@@ -153,12 +158,14 @@ def Alta_Producto(request):
 
     return render(request,'Inventario/alta_prod.html',ctx)
 
+@login_required(login_url='/')
 def Con_Producto(request):
     obj = Producto.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Inventario/con_prod.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Donante(request):
     ctx={'mensaje':'Ingrese datos del donante'}
 
@@ -180,6 +187,7 @@ def Alta_Donante(request):
 
     return render(request,'Inventario/alta_donante.html',ctx)
 
+@login_required(login_url='/')
 def Con_Donante(request):
     obj = Donante.objects.all()
     ctx = {'mensaje':obj}

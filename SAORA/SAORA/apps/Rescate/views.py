@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/')
 def Alta_Animal(request):
     form = Form_Animal()
     ctx={'mensaje': 'Ingrese datos:','form':form}
@@ -28,13 +30,15 @@ def Alta_Animal(request):
             ctx={'mensaje': 'Error en los datos.','form':form}
 
     return render(request,'Rescate/alta_animal.html',ctx)
-    
+
+@login_required(login_url='/')
 def Con_Animal(request):
 	obj = Animal.objects.all()
 	ctx = {'mensaje':obj}
 
 	return render(request,'Rescate/con_animal.html',ctx)
 
+@login_required(login_url='/')
 def Alta_tanimal(request):
         # form = Form_Tanimal()
         ctx={'mensaje': 'Ingrese datos:'}
@@ -54,12 +58,14 @@ def Alta_tanimal(request):
 
         return render(request,'Rescate/alta_tanimal.html',ctx)
 
+@login_required(login_url='/')
 def Con_tanimal(request):
 	obj = Tanimal.objects.all()
 	ctx = {'mensaje':obj}
 
 	return render(request,'Rescate/con_tanimal.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Raza(request):
         # form = Form_Raza()
         tanimal = Tanimal.objects.all()
@@ -84,13 +90,14 @@ def Alta_Raza(request):
 
         return render(request,'Rescate/alta_raza.html',ctx)
 
+@login_required(login_url='/')
 def Con_Raza(request):
 	obj = Raza.objects.all()
 	ctx = {'mensaje':obj}
 
 	return render(request,'Rescate/con_raza.html',ctx)
 
-
+@login_required(login_url='/')
 def Alta_Rescate(request):
         form = Form_Rescate()
         ctx={'mensaje': 'Ingrese datos:','form':form}
@@ -116,6 +123,7 @@ def Alta_Rescate(request):
 
         return render(request,'Rescate/alta_rescate.html',ctx)
 
+@login_required(login_url='/')
 def Con_Rescate(request):
 	obj = Rescate.objects.all()
 	ctx = {'mensaje':obj}

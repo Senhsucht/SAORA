@@ -30,9 +30,9 @@ AUTH_PROFILE_MODULE = 'SAORA.apps.Usuarios.Usuario'
 SECRET_KEY = 'pu#ag(d(%^5x=q9u4dud$@co*uql@5soe-2yv$-6t-xhg(@plo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Senhsucht.pythonanywhere.com']
 
 
 # Application definition
@@ -88,14 +88,14 @@ WSGI_APPLICATION = 'SAORA.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         #
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'SAORADB.mwb'),
-        # 'USER': 'admin',
-        # 'PASSWORD': 'temporal01',
-        # 'HOST': 'Senhsucht.mysql.pythonanywhere-services.com',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Senhsucht$SAORA',
+        'USER': 'Senhsucht',
+        'PASSWORD': 'temporal01',
+        'HOST': 'Senhsucht.mysql.pythonanywhere-services.com',
         # 'PORT': '',
 
     }

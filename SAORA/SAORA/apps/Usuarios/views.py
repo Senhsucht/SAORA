@@ -87,7 +87,7 @@ def Alta_Usr(request):
 			usr = User.objects.create_user(
 			username=usuario,first_name=fname,last_name=lname,password=p1
 			)
-			user.groups.add(tuser)
+			usr.groups.add(tuser)
 
 			usr.save()
 
@@ -163,7 +163,7 @@ def Con_tusr(request):
 @login_required(login_url='/')
 def Alta_tafil(request):
     form = Form_Tafil()
-    ctx={'mensaje': 'Ingrese datos de nuevo tipo de usuario','form':form}
+    ctx={'mensaje': 'Ingrese datos de nuevo tipo de afiliado','form':form}
 
     if request.method == 'POST':
         form = Form_Tafil(request.POST,request.FILES)
@@ -171,7 +171,7 @@ def Alta_tafil(request):
         if form.is_valid():
             t= Tafil()
 
-            t.tusr = form.cleaned_data['Tipo_de_Afiliado']
+            t.tafil = form.cleaned_data['Tipo_de_Afiliado']
             t.descr = form.cleaned_data['Descripcion']
 
             t.save()

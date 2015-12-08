@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/')
 def Alta_Eve_Edo(request):
     # form = Form_Eve_Edo()
     ctx={'mensaje': 'Ingrese datos de nuevo estado de evento'}
@@ -23,12 +24,14 @@ def Alta_Eve_Edo(request):
 
     return render(request,'Evento/alta_eveedo.html',ctx)
 
+@login_required(login_url='/')
 def Con_Eve_Edo(request):
     obj = Eve_Edo.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Evento/con_eveedo.html',ctx)
 
+@login_required(login_url='/')
 def Alta_teve(request):
     # form = Form_Tevento()
     ctx={'mensaje': 'Ingrese datos de nuevo tipo de evento'}
@@ -48,12 +51,14 @@ def Alta_teve(request):
 
     return render(request,'Evento/alta_teve.html',ctx)
 
+@login_required(login_url='/')
 def Con_teve(request):
     obj = Tevento.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Evento/con_teve.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Eve_Patro(request):
     # form = Form_Eve_Patro()
     evento = Evento.objects.all()
@@ -81,12 +86,14 @@ def Alta_Eve_Patro(request):
 
     return render(request,'Evento/alta_eve_patro.html',ctx)
 
+@login_required(login_url='/')
 def Con_Eve_Patro(request):
     obj = Eve_Patro.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Evento/con_eve_patro.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Patrocinador(request):
     # form = Form_Patrocinador()
     ctx={'mensaje': 'Ingrese datos de nuevo patrocinador'}
@@ -111,12 +118,14 @@ def Alta_Patrocinador(request):
 
     return render(request,'Evento/alta_patro.html',ctx)
 
+@login_required(login_url='/')
 def Con_Patrocinador(request):
     obj = Patrocinador.objects.all()
     ctx = {'mensaje':obj}
 
     return render(request,'Evento/con_patro.html',ctx)
 
+@login_required(login_url='/')
 def Alta_Evento(request):
     # form = Form_Evento()
     tevento = Tevento.objects.all()
@@ -147,6 +156,7 @@ def Alta_Evento(request):
 
     return render(request,'Evento/alta_eve.html',ctx)
 
+@login_required(login_url='/')
 def Con_Evento(request):
     obj = Evento.objects.all()
     ctx = {'mensaje':obj}
